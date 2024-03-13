@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 /*
    Go to Amazon
@@ -19,21 +20,19 @@ import java.awt.*;
 public class Ass4_4 extends Tests {
     @Test
     public void robotTest() throws AWTException, InterruptedException {
-        driver.get("https://www.amazon.com/");
+        driver.get("https://www.amazon.com/stores/page/CDF3296F-98B9-4A3E-BCA2-4834A6E96166");
         // create an instance of robot Class
         Robot robot = new Robot();
         // scroll down By Mouse
-        robot.mouseWheel(4); //by 4 units
+        robot.mouseWheel(5);
+        robot.delay(1000);//by 4 units
 
-        wait.until(f->{
             driver.findElement(By.id("navBackToTop")).click();
-            return true;
 
-        });
 
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("document.querySelector('.nav-logo-base.nav-sprite').click();");
-
+        WebElement amazonLogo = driver.findElement(By.cssSelector(".nav-logo-base.nav-sprite"));
+        js.executeScript("arguments[0].click();", amazonLogo);
         Actions actions = new Actions(driver);
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
 

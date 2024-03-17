@@ -1,9 +1,7 @@
-package junit;
+package tests.junit;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
-
-import java.util.Set;
 
 /*   Go to URL: http://facebook.com
        getCookies,

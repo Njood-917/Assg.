@@ -1,4 +1,4 @@
-package junit;
+package tests.junit;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
@@ -9,13 +9,12 @@ import org.openqa.selenium.WebElement;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 
 // Go to amazon.com
 // Take Full Page Screenshot.
 // Take any spesific WebElement ScreenShot
 public class Ass7_4 extends Tests{
-    @Test
+   @Test
     public void screenShotTest() throws IOException {
         driver.navigate().to("https://www.amazon.com/");
         TakesScreenshot ss = (TakesScreenshot)driver;

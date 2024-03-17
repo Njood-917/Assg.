@@ -1,4 +1,4 @@
-package junit;
+package tests.junit;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -8,7 +8,6 @@ import org.openqa.selenium.interactions.Actions;
 
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 /*
    Go to Amazon

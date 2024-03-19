@@ -19,8 +19,7 @@ public class Ass3_5Tests extends Tests {
          driver.findElement(By.id("password")).sendKeys("incorrectPassword");
          driver.findElement(By.id("submit")).click();
         String actualErrorMessage = driver.findElement(By.id("error")).getText();
-        softAssert.assertEquals(actualErrorMessage, "Your password is invalid!",
-                "Error message does not match expected.");
+        softAssert.assertEquals(actualErrorMessage, "Your password is invalid!");
 
         softAssert.assertAll();
 

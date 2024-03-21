@@ -13,13 +13,16 @@ SOFT ASSERT the error message is "Your password is invalid!" */
 public class Ass3_5Tests extends Tests {
     @Test
     public void test01(){
-        SoftAssert softAssert = new SoftAssert();
+
         driver.get("https://practicetestautomation.com/practice-test-login/");
          driver.findElement(By.id("username")).sendKeys("student");
          driver.findElement(By.id("password")).sendKeys("incorrectPassword");
          driver.findElement(By.id("submit")).click();
-        String actualErrorMessage = driver.findElement(By.id("error")).getText();
-        softAssert.assertEquals(actualErrorMessage, "Your password is invalid!");
+
+         By errorMessage = By.id("error");
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(driver.findElement(errorMessage).isDisplayed());
+        softAssert.assertEquals(driver.findElement(errorMessage).getText(), "Your password is invalid!");
 
         softAssert.assertAll();
 

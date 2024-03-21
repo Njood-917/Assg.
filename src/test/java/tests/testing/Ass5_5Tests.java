@@ -5,6 +5,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 //Go to URL: http://crossbrowsertesting.github.io/
@@ -17,28 +19,29 @@ import org.testng.annotations.Test;
 //If our archive link worked, then the following list should have length 4.
 //Assert that this is true as well
 //Doing Cross Browser Testing.
-public class Ass5_5Tests extends Tests{
+public class Ass5_5Tests extends Tests {
     @Test
-    public void toDoApp(){
+    @Parameters({"browser"})
+    public void toDoApp(@Optional("chrome")String browser) {
         bot.navigate("http://crossbrowsertesting.github.io/");
         By toDoLink = By.xpath("//a[@href='todo-app.html']");
         bot.click(toDoLink);
 
-        By toDo4= By.name("todo-4");
+        By toDo4 = By.name("todo-4");
         By toDo5 = By.name("todo-5");
-
+//Checking Box to do-4 and Checking Box to do-5
         driver.findElement(toDo4).click();
         driver.findElement(toDo5).click();
 
-
+//List should be have length 2.
         By toDoList = By.cssSelector(".done-true");
         int toDoListSize = driver.findElements(toDoList).size();
-        Assert.assertEquals(toDoListSize,2);
-
-       By todoInput = By.id("todotext");
-       driver.findElement(todoInput).sendKeys("running" + Keys.ENTER);
-
-    Assert.assertTrue(driver.findElement(By.xpath("(//span[@class='done-false'])[4]")).isDisplayed());
+        Assert.assertEquals(toDoListSize, 2);
+// add a new item
+        By todoInput = By.id("todotext");
+        driver.findElement(todoInput).sendKeys("running" + Keys.ENTER);
+//Assert that the to do we added is present in the list
+        Assert.assertTrue(driver.findElement(By.xpath("(//span[@class='done-false'])[4]")).isDisplayed());
 
         By archiveLink = By.xpath("//a[@ng-click='todoList.archive()']");
         bot.click(archiveLink);
